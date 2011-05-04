@@ -5,3 +5,4 @@ class BookInStock
 		@price = Float(price)
 	end
 end
+#commint test
