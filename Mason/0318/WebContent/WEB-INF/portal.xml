@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <portal name="home_test_index">
+        <portlet name="helleworld" class="com.test.HelleWorldPortlet" >
+            <supports>
+                <view mime="text/html"  template="helloWorld.vm">VIEW</view>
+                <edit mime="text/html" template="helloWorld_edit.vm">EDIT</edit>
+                <max mime="text/html" template="helloWorld.vm">MAX</max>
+                <min mime="text/html" template="helloWorld.vm">MIN</min>
+                <close mime="text/html"  template="helloWorld.vm">CLOSE</close>
+                <save mime="text/html"  template="helloWorld.vm">CLOSE</save>
+            </supports>
+        </portlet>       
+    </portal>
+</config>

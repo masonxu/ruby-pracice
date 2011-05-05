@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jdbc" basedir="." default="mail">
+	<property name="pro.name" value="jdbc"/>
+	<property name="src" value="src"/>
+	<property name="WebContent" value="WebContent"/>
+	<property name="web-inf" value="${WebContent}/WEB-INF"/>
+	<property name="build" value="build"/>
+	<property name="user.dir" value="${build}"/>
+	<property name="dist" value="dist" />
+
+	<path id="dependency.classpath">
+		<fileset dir="${web-inf}/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="build"/>
+	</path>
+	
+	<target name="clean">
+		<delete>
+			<fileset dir="${build}">
+				<include name="**/*.*"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="prepare" depends="clean">
+		 <!-- Create the time stamp -->
+		<tstamp/>
+		<mkdir dir="${dist}"/>
+		<copy todir="${build}">
+			<fileset dir="${src}">
+				<include name="**/*.properties"/>
+				<include name="**/*.xml"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="compile" depends="prepare" >
+		<javac destdir="${build}" target="1.5">
+			<src path="${src}"/>
+			<classpath refid="dependency.classpath"/>
+		</javac>
+	</target>
+	<target name="junit" depends="compile">
+		<mkdir dir="report/html"/>
+		<junit printsummary="yes">
+			<formatter type="plain" usefile="false"/>
+			<formatter type="xml"/>
+			<test name="com.augmentum.training.test.JdbcTest" todir="report"/>
+			<classpath refid="dependency.classpath"/>
+		</junit>
+	</target>
+	
+	<target name="war" depends="compile"
+	  	description="generate the distribution war" >
+	 
+		<!-- Create the war distribution directory -->
+	  	<mkdir dir="${dist}/war"/>
+	 
+	  	<!-- Follow standard WAR structure -->
+	  	<copydir dest="${dist}/war/build/WEB-INF/" src="${WebContent}/WEB-INF/" />
+	  	<copydir dest="${dist}/war/build/WEB-INF/classes/" src="${build}" />
+	 
+		<jar jarfile="${dist}/war/JDBC-${DSTAMP}.war" basedir="${dist}/war/build/"/>
+	 </target>
+	
+	<target name="report" depends="junit">
+		<junitreport todir="report">
+			<fileset dir="report">
+				<include name="Test-*.xml"/>
+			</fileset>	
+			<report todir="report/html"/>
+		</junitreport>
+	</target>
+	
+	<target name="mkzip" depends="report">
+		<jar destfile="report/html/test-result${ant.project.name}.zip">
+			<fileset dir="report/html">
+				<include name="**/*.html"/>
+				<include name="**/*.css"/>
+				<include name="**/*.txt"/>			
+			</fileset>
+		</jar>
+	</target>
+	<target name="mail" depends="mkzip">
+		<mail mailhost="mail2.augmentum.com.cn" mailport="25" subject="The Build and Test"
+			user="masonxu@augmentum.com.cn"	password="0310aimm">
+			<from address="masonxu@augmentum.com.cn" name="mason"/>
+			<fileset dir="${report/html}">
+				<include name="**/test-resutlt${ant.project.name}.zip"/>
+			</fileset>
+			<to address="masonxu@augmentum.com.cn" name="mason"/>
+ 		</mail>		
+	</target>
+	
+</project>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webserver.training.augmentum.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webserver.training.augmentum.com" xmlns:intf="http://webserver.training.augmentum.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webserver.training.augmentum.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="fahrenheitToCentigrade">
+    <complexType>
+     <sequence>
+      <element name="f" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fahrenheitToCentigradeResponse">
+    <complexType>
+     <sequence>
+      <element name="fahrenheitToCentigradeReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="centigradeToFahrenheit">
+    <complexType>
+     <sequence>
+      <element name="f" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="centigradeToFahrenheitResponse">
+    <complexType>
+     <sequence>
+      <element name="centigradeToFahrenheitReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="centigradeToFahrenheitRequest">
+
+      <wsdl:part element="impl:centigradeToFahrenheit" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="centigradeToFahrenheitResponse">
+
+      <wsdl:part element="impl:centigradeToFahrenheitResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="fahrenheitToCentigradeResponse">
+
+      <wsdl:part element="impl:fahrenheitToCentigradeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="fahrenheitToCentigradeRequest">
+
+      <wsdl:part element="impl:fahrenheitToCentigrade" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Convertion">
+
+      <wsdl:operation name="fahrenheitToCentigrade">
+
+         <wsdl:input message="impl:fahrenheitToCentigradeRequest" name="fahrenheitToCentigradeRequest"/>
+
+         <wsdl:output message="impl:fahrenheitToCentigradeResponse" name="fahrenheitToCentigradeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="centigradeToFahrenheit">
+
+         <wsdl:input message="impl:centigradeToFahrenheitRequest" name="centigradeToFahrenheitRequest"/>
+
+         <wsdl:output message="impl:centigradeToFahrenheitResponse" name="centigradeToFahrenheitResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ConvertionSoapBinding" type="impl:Convertion">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="fahrenheitToCentigrade">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fahrenheitToCentigradeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fahrenheitToCentigradeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="centigradeToFahrenheit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="centigradeToFahrenheitRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="centigradeToFahrenheitResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ConvertionService">
+
+      <wsdl:port binding="impl:ConvertionSoapBinding" name="Convertion">
+
+         <wsdlsoap:address location="http://localhost:8080/webservicetest/services/Convertion"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

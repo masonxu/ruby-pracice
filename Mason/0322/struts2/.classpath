@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_21">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Software/struts/freemarker-2.3.15.jar"/>
+	<classpathentry kind="lib" path="C:/Software/struts/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="C:/Software/struts/ognl-2.7.3.jar"/>
+	<classpathentry kind="lib" path="C:/Software/struts/struts2-core-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Software/struts/xwork-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Software/struts/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/jdbc/WebContent/WEB-INF/lib/javax.servlet_2.5.0.v200806031605.jar"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
+</classpath>

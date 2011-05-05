@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webserver.training.augmentum.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webserver.training.augmentum.com" xmlns:intf="http://webserver.training.augmentum.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webserver.training.augmentum.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="convertTemperature">
+    <complexType>
+     <sequence>
+      <element name="s" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="convertTemperatureResponse">
+    <complexType>
+     <sequence>
+      <element name="convertTemperatureReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="convertTemperatureResponse">
+
+      <wsdl:part element="impl:convertTemperatureResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="convertTemperatureRequest">
+
+      <wsdl:part element="impl:convertTemperature" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TemperatureConvertion">
+
+      <wsdl:operation name="convertTemperature">
+
+         <wsdl:input message="impl:convertTemperatureRequest" name="convertTemperatureRequest"/>
+
+         <wsdl:output message="impl:convertTemperatureResponse" name="convertTemperatureResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TemperatureConvertionSoapBinding" type="impl:TemperatureConvertion">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="convertTemperature">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="convertTemperatureRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="convertTemperatureResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TemperatureConvertionService">
+
+      <wsdl:port binding="impl:TemperatureConvertionSoapBinding" name="TemperatureConvertion">
+
+         <wsdlsoap:address location="http://localhost:8080/webservicetest/services/TemperatureConvertion"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

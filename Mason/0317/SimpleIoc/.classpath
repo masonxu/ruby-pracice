@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/Software/eclipse-jee-galileo-SR2-win32(1)/eclipse/plugins/org.apache.xml.resolver_1.2.0.v200902170519.jar"/>
+	<classpathentry kind="lib" path="C:/Software/spring-framework-3.0.2.RELEASE-dependencies/org.dom4j/com.springsource.org.dom4j/1.6.1/com.springsource.org.dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Software/junit4.8.2/junit4.8.2/junit-4.8.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

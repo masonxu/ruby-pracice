@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="userDao" class="com.augmentum.training.dao.UserDaoImpl" />
+	<bean id="userService" class="com.augmentum.training.service.UserService" >
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+</beans>
